@@ -1,0 +1,20 @@
+﻿<Window x:Class="TheMovies.UI.RegisterMovieWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TheMovies.UI"
+        mc:Ignorable="d"
+        Title="RegisterMovieWindow" Height="450" Width="800">
+    <Grid>
+        <TextBlock Text="Registrer film" HorizontalAlignment="Center" Margin="0,58,0,0" TextWrapping="Wrap" TextAlignment="Center" FontSize="45" FontWeight="DemiBold" FontFamily="Times New Roman" VerticalAlignment="Top" Height="58" Width="290"/>
+        <Label Content="Titel:" FontFamily="Times New Roman" FontSize="15" HorizontalAlignment="Left" Margin="116,146,0,0" VerticalAlignment="Top"/>
+        <Label Content="Varighed:" FontFamily="Times New Roman" FontSize="15" HorizontalAlignment="Left" Margin="116,226,0,0" VerticalAlignment="Top"/>
+        <Label Content="Genre:" FontFamily="Times New Roman" FontSize="15" HorizontalAlignment="Left" Margin="116,296,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbTitel" HorizontalAlignment="Left" FontFamily="Times New Roman" FontSize="15" Margin="116,177,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Height="30"/>
+        <TextBox x:Name="tbDuration" HorizontalAlignment="Left" FontFamily="Times New Roman" FontSize="15" Margin="116,257,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Height="30"/>
+        <TextBox x:Name="tbGenre" HorizontalAlignment="Left" FontFamily="Times New Roman" FontSize="15" Margin="116,327,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Height="30"/>
+        <Button x:Name="btnConfirm" Content="Bekræft" FontFamily="Times New Roman" TextElement.Foreground="Beige" Background="Green" FontSize="20" HorizontalAlignment="Left" Margin="548,252,0,0" VerticalAlignment="Top" Height="40" Width="120" Click="btnConfirm_Click" BorderBrush="#FF707070"/>
+
+    </Grid>
+</Window>
