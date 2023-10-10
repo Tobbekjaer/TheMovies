@@ -31,8 +31,10 @@ namespace TheMovies.Model
         {  
             Movie = movie;
             StartTime = startTime;
+            // EndTime could just be startTime + RunTimeTotal? 
             EndTime = endTime;
-            RunTimeTotal = runTimeTotal; // RunTimeTotal = movie.Duration + _adsCleaning;
+            // RunTimeTotal could just be movie.Duration + 30? 
+            RunTimeTotal = runTimeTotal + _adsCleaning; // RunTimeTotal = movie.Duration + _adsCleaning;
             Cinema = cinema;
         }
 

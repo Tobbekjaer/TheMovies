@@ -35,7 +35,7 @@ namespace TheMovies.Application
             // Add the new movie to list of movies
             movies.Add(newMovie);
             // Add the new movie to the database
-            AddMovieToDatabase(newMovie);
+            // AddMovieToDatabase(newMovie);
         }
 
         public Movie GetAddedMovie()

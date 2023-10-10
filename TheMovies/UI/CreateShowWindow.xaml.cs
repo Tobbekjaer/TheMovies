@@ -32,7 +32,7 @@ namespace TheMovies.UI
             // Calls AddShow in Controller class
             controller.AddShow(tbTitel.Text, Convert.ToInt32(tbDuration.Text), tbGenre.Text, tbDirector.Text,
                 Convert.ToDateTime(tbPremiereDate.Text), tbCinemaName.Text, Convert.ToInt32(tbCinemaHall.Text),
-                Convert.ToDateTime(tbStartTime.Text), Convert.ToDateTime(tbEndTime.Text), Convert.ToInt32(tbRunTime));
+                Convert.ToDateTime(tbStartTime.Text), Convert.ToDateTime(tbEndTime.Text), Convert.ToInt32(tbRunTime.Text));
             
             ClearTextBoxes();
         }

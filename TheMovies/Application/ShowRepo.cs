@@ -34,7 +34,7 @@ namespace TheMovies.Application
             shows.Add(newShow);
 
             Debug.WriteLine($"{newShow.Movie.Title} går i {newShow.Cinema.CinemaName} sal {newShow.Cinema.CinemaHall}" +
-                $"kl. {newShow.StartTime} og tager {newShow.RunTimeTotal} minutter.");
+                $" kl. {newShow.StartTime} og tager {newShow.RunTimeTotal} minutter.");
 
             // Add the new show to the database
             // AddShowToDatabase(newShow);
