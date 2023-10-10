@@ -35,10 +35,10 @@ namespace TheMovies.Application
             // Add the new movie to list of movies
             movies.Add(newMovie);
             // Add the new movie to the database
-            AddMovieToDatabase(title, duration, genre);
+            AddMovieToDatabase(newMovie);
         }
 
-        public void AddMovieToDatabase(string title, int duration, string genre)
+        public void AddMovieToDatabase(Movie movie)
         {
             try {
                 using (SqlConnection con = new SqlConnection(connectionString)) {
@@ -47,9 +47,9 @@ namespace TheMovies.Application
                     // Create an INSERT command to add the movie to the database
                     SqlCommand cmd = new SqlCommand("INSERT INTO tmMOVIE (Title, Duration, Genre) " +
                         "VALUES (@Title, @Duration, @Genre);", con);
-                    cmd.Parameters.AddWithValue("@Title", title);
-                    cmd.Parameters.AddWithValue("@Duration", duration);
-                    cmd.Parameters.AddWithValue("@Genre", genre);
+                    cmd.Parameters.AddWithValue("@Title", movie.Title);
+                    cmd.Parameters.AddWithValue("@Duration", movie.Duration);
+                    cmd.Parameters.AddWithValue("@Genre", movie.Genre);
 
                     cmd.ExecuteNonQuery();
                 }
@@ -58,7 +58,7 @@ namespace TheMovies.Application
                 MessageBox.Show(ex.Message);
             }
             finally {
-                MessageBox.Show($"{title} blev tilføjet.");
+                MessageBox.Show($"{movie.Title} blev tilføjet.");
             }
         }
 
