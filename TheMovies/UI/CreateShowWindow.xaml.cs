@@ -47,9 +47,9 @@ namespace TheMovies.UI
             //tbPremiereDate.Clear();
             tbCinemaName.Clear();
             tbCinemaHall.Clear();
-            tbStartTime.Clear();
-            tbEndTime.Clear();
-            tbRunTime.Clear();
+            //tbStartTime.Clear();
+            //tbEndTime.Clear();
+            //tbRunTime.Clear();
         }
     }
 }

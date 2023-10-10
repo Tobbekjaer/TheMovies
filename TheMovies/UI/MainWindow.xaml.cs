@@ -34,7 +34,9 @@ namespace TheMovies.UI
 
         private void btnCreateShow_Click(object sender, RoutedEventArgs e)
         {
-
+            // Open CreateShowWindow
+            CreateShowWindow createShowWindow = new CreateShowWindow();
+            createShowWindow.Show();
         }
     }
 }
