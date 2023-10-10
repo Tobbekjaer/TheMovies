@@ -17,12 +17,26 @@ namespace TheMovies.Application
         }
 
         // Calls AddMovie in MovieRepo
-        public void AddMovie(string title, int duration, string genre)
+        public void AddMovie(string title, int duration, string genre, string director, DateTime premiereDate)
         {
-            movieRepo.AddMovie(title, duration, genre);
+            movieRepo.AddMovie(title, duration, genre, director, premiereDate);
         }
 
+        // Adds a Movie, a Cinema and finally a show til the repositories
+        public void AddShow(string title, int duration, string genre, string director,
+            string cinemaName, int cinemaHall,
+            DateTime premiereDate, DateTime startTime, DateTime endTime, int runTimeTotal)
+        {
+            // Add the movie to movies
+            movieRepo.AddMovie(title, duration, genre, director, premiereDate);
 
+            // Add the cinema to cinemas
+            cinemaRepo.AddCinema(cinemaName, cinemaHall);
+
+            // Add show to shows (parameter Movie and Cinema passed via GetAddedxxx()-methods)
+            showRepo.AddShow(movieRepo.GetAddedMovie(), startTime, endTime, runTimeTotal, cinemaRepo.GetAddedCinema());
+
+        }
 
     }
 }

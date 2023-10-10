@@ -42,7 +42,7 @@ namespace TheMovies.Application
         //            con.Open();
 
         //            // Create an INSERT command to add the show to the database
-        //            SqlCommand cmd = new SqlCommand("INSERT INTO vwViewAllShows (Title, Duration, Genre) " +
+        //            SqlCommand cmd = new SqlCommand("INSERT INTO spInsertShow (Title, Duration, Genre) " + // Use a stored procedure
         //                "VALUES (@Title, @Duration, @Genre);", con);
         //            cmd.Parameters.AddWithValue("@Title", title);
         //            cmd.Parameters.AddWithValue("@Duration", duration);

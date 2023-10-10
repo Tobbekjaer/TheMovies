@@ -31,11 +31,16 @@ namespace TheMovies.Application
         public void AddMovie(string title, int duration, string genre, string director, DateTime premiereDate)
         {
             // Create a new movie 
-            Movie newMovie = new Movie(title, duration, genre, director);
+            Movie newMovie = new Movie(title, duration, genre, director); // Without premiereDate --> will be default value
             // Add the new movie to list of movies
             movies.Add(newMovie);
             // Add the new movie to the database
             AddMovieToDatabase(newMovie);
+        }
+
+        public Movie GetAddedMovie()
+        {
+            return movies.Last();
         }
 
         public void AddMovieToDatabase(Movie movie)

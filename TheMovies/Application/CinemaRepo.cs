@@ -36,7 +36,13 @@ namespace TheMovies.Application
                 AddCinemaToDatabase(newCinema);
             }
 
-            public void AddCinemaToDatabase(Cinema cinema)
+        public Cinema GetAddedCinema()
+        {
+            return cinemas.Last();
+        }
+
+
+        public void AddCinemaToDatabase(Cinema cinema)
             {
                 try {
                     using (SqlConnection con = new SqlConnection(connectionString)) {
