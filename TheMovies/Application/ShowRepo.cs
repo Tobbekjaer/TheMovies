@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,6 +32,10 @@ namespace TheMovies.Application
             Show newShow = new Show(movie, startTime, endTime, runTimeTotal, cinema);
             // Add the new show to list of shows
             shows.Add(newShow);
+
+            Debug.WriteLine($"{newShow.Movie.Title} går i {newShow.Cinema.CinemaName} sal {newShow.Cinema.CinemaHall}" +
+                $"kl. {newShow.StartTime} og tager {newShow.RunTimeTotal} minutter.");
+
             // Add the new show to the database
             // AddShowToDatabase(newShow);
         }

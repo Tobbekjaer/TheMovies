@@ -36,7 +36,7 @@ namespace TheMovies.UI
 
         private void ClearTextBoxes()
         {
-            // Clears all text boxes
+            // Clears all text boxes except movie info
             tbTitel.Clear();
             tbDuration.Clear();
             tbGenre.Clear();

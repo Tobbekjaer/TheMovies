@@ -24,8 +24,8 @@ namespace TheMovies.Application
 
         // Adds a Movie, a Cinema and finally a show til the repositories
         public void AddShow(string title, int duration, string genre, string director,
-            string cinemaName, int cinemaHall,
-            DateTime premiereDate, DateTime startTime, DateTime endTime, int runTimeTotal)
+            DateTime premiereDate, string cinemaName, int cinemaHall,
+            DateTime startTime, DateTime endTime, int runTimeTotal)
         {
             // Add the movie to movies
             movieRepo.AddMovie(title, duration, genre, director, premiereDate);
