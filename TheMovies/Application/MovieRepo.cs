@@ -28,28 +28,30 @@ namespace TheMovies.Application
             connectionString = config.GetConnectionString("MyDBConnection");
         }
 
-        public void AddMovie(string title, int duration, string genre)
+        public void AddMovie(string title, int duration, string genre, string director, DateTime premiereDate)
         {
             // Create a new movie 
-            Movie newMovie = new Movie(title, duration, genre);
+            Movie newMovie = new Movie(title, duration, genre, director);
             // Add the new movie to list of movies
             movies.Add(newMovie);
             // Add the new movie to the database
-            AddMovieToDatabase(title, duration, genre);
+            AddMovieToDatabase(newMovie);
         }
 
-        public void AddMovieToDatabase(string title, int duration, string genre)
+        public void AddMovieToDatabase(Movie movie)
         {
             try {
                 using (SqlConnection con = new SqlConnection(connectionString)) {
                     con.Open();
 
                     // Create an INSERT command to add the movie to the database
-                    SqlCommand cmd = new SqlCommand("INSERT INTO tmMOVIE (Title, Duration, Genre) " +
+                    SqlCommand cmd = new SqlCommand("INSERT INTO tmMOVIE (Title, Duration, Genre, Director, PremiereDate) " +
                         "VALUES (@Title, @Duration, @Genre);", con);
-                    cmd.Parameters.AddWithValue("@Title", title);
-                    cmd.Parameters.AddWithValue("@Duration", duration);
-                    cmd.Parameters.AddWithValue("@Genre", genre);
+                    cmd.Parameters.AddWithValue("@Title", movie.Title);
+                    cmd.Parameters.AddWithValue("@Duration", movie.Duration);
+                    cmd.Parameters.AddWithValue("@Genre", movie.Genre);
+                    cmd.Parameters.AddWithValue("@Genre", movie.Director);
+                    cmd.Parameters.AddWithValue("@Genre", movie.PremiereDate);
 
                     cmd.ExecuteNonQuery();
                 }
@@ -58,7 +60,7 @@ namespace TheMovies.Application
                 MessageBox.Show(ex.Message);
             }
             finally {
-                MessageBox.Show($"{title} blev tilføjet.");
+                // MessageBox.Show($"{movie.Title} blev tilføjet.");
             }
         }
 

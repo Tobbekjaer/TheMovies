@@ -9,6 +9,8 @@ namespace TheMovies.Application
     public class Controller
     {
         MovieRepo movieRepo = new MovieRepo();
+        ShowRepo showRepo = new ShowRepo();
+        CinemaRepo cinemaRepo = new CinemaRepo();
         public Controller() 
         {
 
@@ -19,6 +21,8 @@ namespace TheMovies.Application
         {
             movieRepo.AddMovie(title, duration, genre);
         }
+
+
 
     }
 }
