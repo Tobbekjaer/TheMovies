@@ -13,10 +13,11 @@ namespace TheMovies.Application
     public class CinemaRepo
     {
 
-            private List<Cinema> cinemas; // List of cinemas
-            private string connectionString; // Connection string for database
+        private List<Cinema> cinemas; // List of cinemas
+        private string connectionString; // Connection string for database
+        public int generatedCinemaID;
 
-            public CinemaRepo()
+        public CinemaRepo()
             {
                 // Create a new list of cinemas 
                 cinemas = new List<Cinema>();
@@ -54,8 +55,13 @@ namespace TheMovies.Application
                         cmd.Parameters.AddWithValue("@CinemaName", cinema.CinemaName);
                         cmd.Parameters.AddWithValue("@CinemaHall", cinema.CinemaHall);
 
-                        cmd.ExecuteNonQuery();
-                    }
+                    // Execute the INSERT command
+                    cmd.ExecuteNonQuery();
+
+                    // Retrieve the generated CinemaID using @@IDENTITY
+                    cmd.CommandText = "SELECT IDENT_CURRENT('tmCINEMA') AS [IDENT_CURRENT('tmCINEMA')]";
+                    generatedCinemaID = Convert.ToInt32(cmd.ExecuteScalar());
+                }
                 }
                 catch (Exception ex) {
                     MessageBox.Show(ex.Message);

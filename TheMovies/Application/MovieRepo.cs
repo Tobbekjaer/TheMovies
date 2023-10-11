@@ -17,7 +17,7 @@ namespace TheMovies.Application
 
         private List<Movie> movies; // List of movies
         private string connectionString; // Connection string for database
-        public int generatedProductID;
+        public int generatedMovieID;
 
         public MovieRepo()
         {
@@ -52,16 +52,15 @@ namespace TheMovies.Application
 
                     // Create an INSERT command to add the movie to the database
                     SqlCommand cmd = new SqlCommand("INSERT INTO tmMOVIE (Title, Duration, Genre, Director, PremiereDate) " +
-                        "VALUES (@Title, @Duration, @Genre, @Director, @PremiereDate);", con);
+                        "VALUES (@Title, @Duration, @Genre, @Director, @PremiereDate); SELECT SCOPE_IDENTITY();", con);
                     cmd.Parameters.AddWithValue("@Title", movie.Title);
                     cmd.Parameters.AddWithValue("@Duration", movie.Duration);
                     cmd.Parameters.AddWithValue("@Genre", movie.Genre);
                     cmd.Parameters.AddWithValue("@Director", movie.Director);
                     cmd.Parameters.AddWithValue("@PremiereDate", movie.PremiereDate);
 
-                    cmd.ExecuteNonQuery();
-                    // Execute the command and get the generated ProductID
-                    generatedProductID = Convert.ToInt32(cmd.ExecuteScalar());
+                    // Retrieve the generated MovieID using SCOPE_IDENTITY()
+                    generatedMovieID = Convert.ToInt32(cmd.ExecuteScalar());
                 }
             }
             catch (Exception ex) {
