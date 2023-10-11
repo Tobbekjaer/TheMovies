@@ -16,7 +16,6 @@ namespace TheMovies.Model
 
         public int RunTimeTotal { get; set; }
 
-
         private int _adsCleaning = 30;
 
         public Cinema Cinema { get; set; }

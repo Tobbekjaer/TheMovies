@@ -17,6 +17,7 @@ namespace TheMovies.Application
 
         private List<Movie> movies; // List of movies
         private string connectionString; // Connection string for database
+        public int generatedProductID;
 
         public MovieRepo()
         {
@@ -31,11 +32,11 @@ namespace TheMovies.Application
         public void AddMovie(string title, int duration, string genre, string director, DateTime premiereDate)
         {
             // Create a new movie 
-            Movie newMovie = new Movie(title, duration, genre, director); // Without premiereDate --> will be default value
+            Movie newMovie = new Movie(title, duration, genre, director, premiereDate); 
             // Add the new movie to list of movies
             movies.Add(newMovie);
             // Add the new movie to the database
-            // AddMovieToDatabase(newMovie);
+            AddMovieToDatabase(newMovie);
         }
 
         public Movie GetAddedMovie()
@@ -51,14 +52,16 @@ namespace TheMovies.Application
 
                     // Create an INSERT command to add the movie to the database
                     SqlCommand cmd = new SqlCommand("INSERT INTO tmMOVIE (Title, Duration, Genre, Director, PremiereDate) " +
-                        "VALUES (@Title, @Duration, @Genre);", con);
+                        "VALUES (@Title, @Duration, @Genre, @Director, @PremiereDate);", con);
                     cmd.Parameters.AddWithValue("@Title", movie.Title);
                     cmd.Parameters.AddWithValue("@Duration", movie.Duration);
                     cmd.Parameters.AddWithValue("@Genre", movie.Genre);
-                    cmd.Parameters.AddWithValue("@Genre", movie.Director);
-                    cmd.Parameters.AddWithValue("@Genre", movie.PremiereDate);
+                    cmd.Parameters.AddWithValue("@Director", movie.Director);
+                    cmd.Parameters.AddWithValue("@PremiereDate", movie.PremiereDate);
 
                     cmd.ExecuteNonQuery();
+                    // Execute the command and get the generated ProductID
+                    generatedProductID = Convert.ToInt32(cmd.ExecuteScalar());
                 }
             }
             catch (Exception ex) {

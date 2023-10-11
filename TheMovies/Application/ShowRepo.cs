@@ -37,32 +37,42 @@ namespace TheMovies.Application
                 $" kl. {newShow.StartTime} og tager {newShow.RunTimeTotal} minutter.");
 
             // Add the new show to the database
-            // AddShowToDatabase(newShow);
+            AddShowToDatabase(newShow);
         }
 
-        //public void AddShowToDatabase(Show show)
-        //{
-        //    try {
-        //        using (SqlConnection con = new SqlConnection(connectionString)) {
-        //            con.Open();
+        public void AddShowToDatabase(Show show)
+        {
+            // Store the generated movieID
+            MovieRepo movieRepo = new MovieRepo();
+            int movieID = movieRepo.generatedMovieID;
 
-        //            // Create an INSERT command to add the show to the database
-        //            SqlCommand cmd = new SqlCommand("INSERT INTO spInsertShow (Title, Duration, Genre) " + // Use a stored procedure
-        //                "VALUES (@Title, @Duration, @Genre);", con);
-        //            cmd.Parameters.AddWithValue("@Title", title);
-        //            cmd.Parameters.AddWithValue("@Duration", duration);
-        //            cmd.Parameters.AddWithValue("@Genre", genre);
+            // Store the generated cinemaID
+            CinemaRepo cinemaRepo = new CinemaRepo();
+            int cinemaID = cinemaRepo.generatedCinemaID;
 
-        //            cmd.ExecuteNonQuery();
-        //        }
-        //    }
-        //    catch (Exception ex) {
-        //        MessageBox.Show(ex.Message);
-        //    }
-        //    finally {
-        //        MessageBox.Show($"{title} blev tilføjet.");
-        //    }
-        //}
+            try {
+                using (SqlConnection con = new SqlConnection(connectionString)) {
+                    con.Open();
+
+                    // Create an INSERT command to add the show to the database
+                    SqlCommand cmd = new SqlCommand("INSERT INTO tmSHOW (StartTime, EndTime, RunTimeTotal, MovieID, CinemaID) " +
+                        "VALUES (@StartTime, @EndTime, @RunTimeTotal, @MovieID, @CinemaID);", con);
+                    cmd.Parameters.AddWithValue("@StartTime", show.StartTime);
+                    cmd.Parameters.AddWithValue("@EndTime", show.EndTime);
+                    cmd.Parameters.AddWithValue("@RunTimeTotal", show.RunTimeTotal);
+                    cmd.Parameters.AddWithValue("@MovieID", movieID);
+                    cmd.Parameters.AddWithValue("@CinemaID", cinemaID);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
+            finally {
+                // MessageBox.Show($"{title} blev tilføjet.");
+            }
+        }
 
     }
 }

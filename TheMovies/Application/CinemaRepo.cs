@@ -33,7 +33,7 @@ namespace TheMovies.Application
                 // Add the new cinema to list of cinemas
                 cinemas.Add(newCinema);
                 // Add the new cinema to the database
-                // AddCinemaToDatabase(newCinema);
+                AddCinemaToDatabase(newCinema);
             }
 
         public Cinema GetAddedCinema()
