@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,7 @@ namespace TheMovies.Application
     {
         private List<Show> shows; // List of shows
         private string connectionString; // Connection string for database
+        public int generatedShowID;
 
         public ShowRepo()
         {
@@ -55,15 +57,22 @@ namespace TheMovies.Application
                     con.Open();
 
                     // Create an INSERT command to add the show to the database
-                    SqlCommand cmd = new SqlCommand("INSERT INTO tmSHOW (StartTime, EndTime, RunTimeTotal, MovieID, CinemaID) " +
-                        "VALUES (@StartTime, @EndTime, @RunTimeTotal, @MovieID, @CinemaID);", con);
+                    SqlCommand cmd = new SqlCommand("INSERT INTO spInsertShow", con);
+                    //SqlCommand cmd = new SqlCommand("INSERT INTO tmSHOW (StartTime, EndTime, RunTimeTotal, MovieID, CinemaID) " +
+                    //    "VALUES (@StartTime, @EndTime, @RunTimeTotal, @MovieID, @CinemaID);", con);
                     cmd.Parameters.AddWithValue("@StartTime", show.StartTime);
                     cmd.Parameters.AddWithValue("@EndTime", show.EndTime);
                     cmd.Parameters.AddWithValue("@RunTimeTotal", show.RunTimeTotal);
                     cmd.Parameters.AddWithValue("@MovieID", movieID);
                     cmd.Parameters.AddWithValue("@CinemaID", cinemaID);
 
+                    // Adding the output parameters
+                    cmd.Parameters.Add("@ShowID", SqlDbType.Int).Direction = ParameterDirection.Output;
+
                     cmd.ExecuteNonQuery();
+
+                    // Retrieve the generated ShowID using the Stored Procedure output
+                    generatedShowID = (int)cmd.Parameters["@ShowID"].Value;
                 }
             }
             catch (Exception ex) {

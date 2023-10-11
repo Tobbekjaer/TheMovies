@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,9 +14,9 @@ namespace TheMovies.Application
     public class CinemaRepo
     {
 
-        private List<Cinema> cinemas; // List of cinemas
-        private string connectionString; // Connection string for database
-        public int generatedCinemaID;
+    private List<Cinema> cinemas; // List of cinemas
+    private string connectionString; // Connection string for database
+    public int generatedCinemaID;
 
         public CinemaRepo()
             {
@@ -49,18 +50,20 @@ namespace TheMovies.Application
                     using (SqlConnection con = new SqlConnection(connectionString)) {
                         con.Open();
 
-                        // Create an INSERT command to add the cinema to the database
-                        SqlCommand cmd = new SqlCommand("INSERT INTO tmCINEMA (CinemaName, CinemaHall) " +
-                            "VALUES (@CinemaName, @CinemaHall);", con);
-                        cmd.Parameters.AddWithValue("@CinemaName", cinema.CinemaName);
-                        cmd.Parameters.AddWithValue("@CinemaHall", cinema.CinemaHall);
+                    // Create an INSERT command to add the cinema to the database
+                    SqlCommand cmd = new SqlCommand("INSERT INTO spInsertCinema", con);
+                    //SqlCommand cmd = new SqlCommand("INSERT INTO tmCINEMA (CinemaName, CinemaHall) " +
+                    //    "VALUES (@CinemaName, @CinemaHall); SELECT SCOPE_IDENTITY();", con);
+                    cmd.Parameters.AddWithValue("@CinemaName", cinema.CinemaName);
+                    cmd.Parameters.AddWithValue("@CinemaHall", cinema.CinemaHall);
 
-                    // Execute the INSERT command
+                    // Adding the output parameters
+                    cmd.Parameters.Add("@CinemaID", SqlDbType.Int).Direction = ParameterDirection.Output;
+
                     cmd.ExecuteNonQuery();
 
-                    // Retrieve the generated CinemaID using @@IDENTITY
-                    cmd.CommandText = "SELECT IDENT_CURRENT('tmCINEMA') AS [IDENT_CURRENT('tmCINEMA')]";
-                    generatedCinemaID = Convert.ToInt32(cmd.ExecuteScalar());
+                    // Retrieve the generated CinemaID using the Stored Procedure output
+                    generatedCinemaID = (int)cmd.Parameters["@CinemaID"].Value;
                 }
                 }
                 catch (Exception ex) {
@@ -72,5 +75,5 @@ namespace TheMovies.Application
             }
 
         }
-    }
+}
 
