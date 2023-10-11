@@ -25,7 +25,7 @@ namespace TheMovies.Application
         // Adds a Movie, a Cinema and finally a show til the repositories
         public void AddShow(string title, int duration, string genre, string director,
             DateTime premiereDate, string cinemaName, int cinemaHall,
-            DateTime startTime, DateTime endTime, int runTimeTotal)
+            DateTime startTime)
         {
             // Add the movie to movies
             movieRepo.AddMovie(title, duration, genre, director, premiereDate);
@@ -34,7 +34,7 @@ namespace TheMovies.Application
             cinemaRepo.AddCinema(cinemaName, cinemaHall);
 
             // Add show to shows (parameter Movie and Cinema passed via GetAddedxxx()-methods)
-            showRepo.AddShow(movieRepo.GetAddedMovie(), startTime, endTime, runTimeTotal, cinemaRepo.GetAddedCinema());
+            showRepo.AddShow(movieRepo.GetAddedMovie(), startTime, cinemaRepo.GetAddedCinema());
 
         }
 
