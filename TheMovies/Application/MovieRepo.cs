@@ -51,16 +51,21 @@ namespace TheMovies.Application
                     con.Open();
 
                     // Create an INSERT command to add the movie to the database
-                    SqlCommand cmd = new SqlCommand("INSERT INTO tmMOVIE (Title, Duration, Genre, Director, PremiereDate) " +
-                        "VALUES (@Title, @Duration, @Genre, @Director, @PremiereDate); SELECT SCOPE_IDENTITY();", con);
+                    SqlCommand cmd = new SqlCommand("INSERT INTO spInsertMovie", con);
+                    //SqlCommand cmd = new SqlCommand("INSERT INTO tmMOVIE (Title, Duration, Genre, Director, PremiereDate) " +
+                    //    "VALUES (@Title, @Duration, @Genre, @Director, @PremiereDate); SELECT SCOPE_IDENTITY();", con);
                     cmd.Parameters.AddWithValue("@Title", movie.Title);
                     cmd.Parameters.AddWithValue("@Duration", movie.Duration);
                     cmd.Parameters.AddWithValue("@Genre", movie.Genre);
                     cmd.Parameters.AddWithValue("@Director", movie.Director);
                     cmd.Parameters.AddWithValue("@PremiereDate", movie.PremiereDate);
+                    // Adding the output parameters
+                    cmd.Parameters.Add("@MovieID", SqlDbType.Int).Direction = ParameterDirection.Output;
 
-                    // Retrieve the generated MovieID using SCOPE_IDENTITY()
-                    generatedMovieID = Convert.ToInt32(cmd.ExecuteScalar());
+                    cmd.ExecuteNonQuery();
+
+                    // Retrieve the generated MovieID using the Stored Procedure output
+                    generatedMovieID = (int)cmd.Parameters["@MovieID"].Value;
                 }
             }
             catch (Exception ex) {
