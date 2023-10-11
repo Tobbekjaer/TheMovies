@@ -57,7 +57,7 @@ namespace TheMovies.Application
                     con.Open();
 
                     // Create an INSERT command to add the show to the database
-                    SqlCommand cmd = new SqlCommand("INSERT INTO spInsertShow", con);
+                    SqlCommand cmd = new SqlCommand("EXEC spInsertShow", con);
                     //SqlCommand cmd = new SqlCommand("INSERT INTO tmSHOW (StartTime, EndTime, RunTimeTotal, MovieID, CinemaID) " +
                     //    "VALUES (@StartTime, @EndTime, @RunTimeTotal, @MovieID, @CinemaID);", con);
                     cmd.Parameters.AddWithValue("@StartTime", show.StartTime);

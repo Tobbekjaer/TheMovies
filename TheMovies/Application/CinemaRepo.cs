@@ -51,7 +51,7 @@ namespace TheMovies.Application
                         con.Open();
 
                     // Create an INSERT command to add the cinema to the database
-                    SqlCommand cmd = new SqlCommand("INSERT INTO spInsertCinema", con);
+                    SqlCommand cmd = new SqlCommand("EXEC spInsertCinema", con);
                     //SqlCommand cmd = new SqlCommand("INSERT INTO tmCINEMA (CinemaName, CinemaHall) " +
                     //    "VALUES (@CinemaName, @CinemaHall); SELECT SCOPE_IDENTITY();", con);
                     cmd.Parameters.AddWithValue("@CinemaName", cinema.CinemaName);
