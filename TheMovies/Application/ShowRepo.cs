@@ -16,7 +16,6 @@ namespace TheMovies.Application
     {
         private List<Show> shows; // List of shows
         private string connectionString; // Connection string for database
-        public int generatedShowID;
 
         public ShowRepo()
         {
@@ -44,27 +43,20 @@ namespace TheMovies.Application
 
         public void AddShowToDatabase(Show show)
         {
-            // Store the generated movieID
-            MovieRepo movieRepo = new MovieRepo();
-            int movieID = movieRepo.generatedMovieID;
-
-            // Store the generated cinemaID
-            CinemaRepo cinemaRepo = new CinemaRepo();
-            int cinemaID = cinemaRepo.generatedCinemaID;
 
             try {
                 using (SqlConnection con = new SqlConnection(connectionString)) {
                     con.Open();
 
                     // Create an INSERT command to add the show to the database
-                    SqlCommand cmd = new SqlCommand("EXEC spInsertShow", con);
-                    //SqlCommand cmd = new SqlCommand("INSERT INTO tmSHOW (StartTime, EndTime, RunTimeTotal, MovieID, CinemaID) " +
-                    //    "VALUES (@StartTime, @EndTime, @RunTimeTotal, @MovieID, @CinemaID);", con);
+                    SqlCommand cmd = new SqlCommand("spInsertShow", con);
+                   
+                    cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@StartTime", show.StartTime);
                     cmd.Parameters.AddWithValue("@EndTime", show.EndTime);
                     cmd.Parameters.AddWithValue("@RunTimeTotal", show.RunTimeTotal);
-                    cmd.Parameters.AddWithValue("@MovieID", movieID);
-                    cmd.Parameters.AddWithValue("@CinemaID", cinemaID);
+                    cmd.Parameters.AddWithValue("@MovieID", show.Movie.GeneratedMovieID);
+                    cmd.Parameters.AddWithValue("@CinemaID", show.Cinema.GeneratedCinemaID);
 
                     // Adding the output parameters
                     cmd.Parameters.Add("@ShowID", SqlDbType.Int).Direction = ParameterDirection.Output;
@@ -72,7 +64,7 @@ namespace TheMovies.Application
                     cmd.ExecuteNonQuery();
 
                     // Retrieve the generated ShowID using the Stored Procedure output
-                    generatedShowID = (int)cmd.Parameters["@ShowID"].Value;
+                    show.GeneratedShowID = (int)cmd.Parameters["@ShowID"].Value;
                 }
             }
             catch (Exception ex) {

@@ -19,6 +19,7 @@ namespace TheMovies.Model
         private int _adsCleaning = 30;
 
         public Cinema Cinema { get; set; }
+        public int GeneratedShowID { get; set; }
 
         public Show(Movie movie, DateTime startTime, Cinema cinema)
         {  

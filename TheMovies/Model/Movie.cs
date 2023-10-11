@@ -13,6 +13,7 @@ namespace TheMovies.Model
         public string Genre { get; set; }
         public string Director { get; set; }
         public DateTime PremiereDate { get; set; } = DateTime.Now;
+        public int GeneratedMovieID { get; set; }
 
         public Movie(string title, int duration, string genre, string director, DateTime premiereDate) 
         {

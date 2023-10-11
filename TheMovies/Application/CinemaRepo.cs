@@ -16,8 +16,7 @@ namespace TheMovies.Application
 
     private List<Cinema> cinemas; // List of cinemas
     private string connectionString; // Connection string for database
-    public int generatedCinemaID;
-
+   
         public CinemaRepo()
             {
                 // Create a new list of cinemas 
@@ -35,7 +34,7 @@ namespace TheMovies.Application
                 // Add the new cinema to list of cinemas
                 cinemas.Add(newCinema);
                 // Add the new cinema to the database
-                AddCinemaToDatabase(newCinema);
+                AddCinemaToDatabase(newCinema);            
             }
 
         public Cinema GetAddedCinema()
@@ -51,9 +50,9 @@ namespace TheMovies.Application
                         con.Open();
 
                     // Create an INSERT command to add the cinema to the database
-                    SqlCommand cmd = new SqlCommand("EXEC spInsertCinema", con);
-                    //SqlCommand cmd = new SqlCommand("INSERT INTO tmCINEMA (CinemaName, CinemaHall) " +
-                    //    "VALUES (@CinemaName, @CinemaHall); SELECT SCOPE_IDENTITY();", con);
+                    SqlCommand cmd = new SqlCommand("spInsertCinema", con);
+                    
+                    cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@CinemaName", cinema.CinemaName);
                     cmd.Parameters.AddWithValue("@CinemaHall", cinema.CinemaHall);
 
@@ -63,7 +62,7 @@ namespace TheMovies.Application
                     cmd.ExecuteNonQuery();
 
                     // Retrieve the generated CinemaID using the Stored Procedure output
-                    generatedCinemaID = (int)cmd.Parameters["@CinemaID"].Value;
+                    cinema.GeneratedCinemaID = (int)cmd.Parameters["@CinemaID"].Value;
                 }
                 }
                 catch (Exception ex) {
