@@ -26,10 +26,10 @@ namespace TheMovies.Application
             connectionString = config.GetConnectionString("MyDBConnection");
         }
 
-        public void AddShow(Movie movie, DateTime startTime, DateTime endTime, int runTimeTotal, Cinema cinema)
+        public void AddShow(Movie movie, DateTime startTime, Cinema cinema)
         {
             // Create a new movie 
-            Show newShow = new Show(movie, startTime, endTime, runTimeTotal, cinema);
+            Show newShow = new Show(movie, startTime, cinema);
             // Add the new show to list of shows
             shows.Add(newShow);
 

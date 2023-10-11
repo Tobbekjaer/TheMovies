@@ -12,29 +12,21 @@ namespace TheMovies.Model
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
 
-        private Movie _movie;
-
-        public Movie Movie
-        {
-            get { return _movie; }
-            set {_movie = value; }
-        }
-
+        public Movie Movie { get; set; }
 
         public int RunTimeTotal { get; set; }
+
 
         private int _adsCleaning = 30;
 
         public Cinema Cinema { get; set; }
 
-        public Show(Movie movie, DateTime startTime, DateTime endTime, int runTimeTotal, Cinema cinema)
+        public Show(Movie movie, DateTime startTime, Cinema cinema)
         {  
             Movie = movie;
-            StartTime = startTime;
-            // EndTime could just be startTime + RunTimeTotal? 
-            EndTime = endTime;
-            // RunTimeTotal could just be movie.Duration + 30? 
-            RunTimeTotal = runTimeTotal + _adsCleaning; // RunTimeTotal = movie.Duration + _adsCleaning;
+            StartTime = startTime;         
+            RunTimeTotal = movie.Duration + _adsCleaning;
+            EndTime = startTime.AddMinutes(RunTimeTotal);
             Cinema = cinema;
         }
 
