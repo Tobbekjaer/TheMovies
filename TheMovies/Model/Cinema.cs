@@ -8,6 +8,7 @@ namespace TheMovies.Model
 {
     public class Cinema
     {
+
         public string CinemaName { get; set; }
         public int CinemaHall { get; set; }
         public int GeneratedCinemaID { get; set; }
@@ -16,5 +17,6 @@ namespace TheMovies.Model
             CinemaName = cinemaName;
             CinemaHall = cinemaHall;
         }
+
     }
 }

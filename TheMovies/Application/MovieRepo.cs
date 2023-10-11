@@ -35,11 +35,13 @@ namespace TheMovies.Application
             movies.Add(newMovie);
             // Add the new movie to the database
             AddMovieToDatabase(newMovie);
+
         }
 
         public Movie GetAddedMovie()
         {
             return movies.Last();
+
         }
 
         public void AddMovieToDatabase(Movie movie)
@@ -49,6 +51,7 @@ namespace TheMovies.Application
                     con.Open();
 
                     // Create an INSERT command to add the movie to the database
+
                     SqlCommand cmd = new SqlCommand("spInsertMovie", con);
 
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -70,6 +73,7 @@ namespace TheMovies.Application
                 MessageBox.Show(ex.Message);
             }
             finally {
+
                 // MessageBox.Show($"{movie.Title} blev tilføjet.");
             }
         }
