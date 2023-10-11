@@ -29,14 +29,14 @@ namespace TheMovies.UI
 
         private void btnConfirm_Click(object sender, RoutedEventArgs e)
         {
-            // Calls AddMovie in Controller class
-            controller.AddMovie(tbTitel.Text, Convert.ToInt32(tbDuration.Text), tbGenre.Text);
-            ClearTextBoxes();
+            //// Calls AddMovie in Controller class
+            //controller.AddMovie(tbTitel.Text, Convert.ToInt32(tbDuration.Text), tbGenre.Text);
+            //ClearTextBoxes();
         }
 
         private void ClearTextBoxes()
         {
-            // Clears all text boxes
+            // Clears all text boxes except movie info
             tbTitel.Clear();
             tbDuration.Clear();
             tbGenre.Clear();

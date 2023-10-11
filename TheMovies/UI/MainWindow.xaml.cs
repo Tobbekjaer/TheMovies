@@ -31,5 +31,12 @@ namespace TheMovies.UI
             RegisterMovieWindow registerMovieWindow = new RegisterMovieWindow();
             registerMovieWindow.Show();
         }
+
+        private void btnCreateShow_Click(object sender, RoutedEventArgs e)
+        {
+            // Open CreateShowWindow
+            CreateShowWindow createShowWindow = new CreateShowWindow();
+            createShowWindow.Show();
+        }
     }
 }

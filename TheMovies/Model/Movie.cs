@@ -10,13 +10,28 @@ namespace TheMovies.Model
     {
         public string Title { get; set; }
         public int Duration { get; set; }
-        public string Genre { get; set; }   
+        public string Genre { get; set; }
+        public string Director { get; set; }
+        public DateTime PremiereDate { get; set; } = DateTime.Now;
+        public int GeneratedMovieID { get; set; }
 
-        public Movie(string title, int duration, string genre)
+        public Movie(string title, int duration, string genre, string director, DateTime premiereDate) 
         {
             Title = title;
             Duration = duration;
             Genre = genre;
-        }   
+            Director = director;
+            PremiereDate = premiereDate;
+        }
+
+        public Movie(string title, int duration, string genre, string director)
+        {
+            Title = title;
+            Duration = duration;
+            Genre = genre;
+            Director = director;
+            PremiereDate = PremiereDate;
+        }
+
     }
 }
