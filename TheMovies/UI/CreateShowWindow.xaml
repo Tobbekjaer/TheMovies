@@ -8,7 +8,7 @@
         Title="CreateShowWindow" Height="450" Width="800">
     <Grid>
         <TextBlock Text="Opret en forestilling" HorizontalAlignment="Center" Margin="0,37,0,0" TextWrapping="Wrap" TextAlignment="Center" FontSize="35" FontWeight="DemiBold" FontFamily="Times New Roman" VerticalAlignment="Top" Height="58" Width="412"/>
-        <Button x:Name="btnConfirm" Content="Bekræft" FontFamily="Times New Roman" TextElement.Foreground="Beige" Background="Green" FontSize="20" HorizontalAlignment="Left" Margin="611,353,0,0" VerticalAlignment="Top" Height="40" Width="120" Click="btnConfirm_Click" BorderBrush="#FF707070"/>
+        <Button x:Name="btnConfirm" Content="Bekræft" FontFamily="Times New Roman" TextElement.Foreground="Beige" Background="Green" FontSize="20" HorizontalAlignment="Left" Margin="486,241,0,0" VerticalAlignment="Top" Height="40" Width="120" Click="btnConfirm_Click" BorderBrush="#FF707070"/>
         <Label Content="Titel:" FontFamily="Times New Roman" FontSize="15" HorizontalAlignment="Left" Margin="52,44,0,0" VerticalAlignment="Top"/>
         <Label Content="Varighed:" FontFamily="Times New Roman" FontSize="15" HorizontalAlignment="Left" Margin="52,124,0,0" VerticalAlignment="Top"/>
         <Label Content="Genre:" FontFamily="Times New Roman" FontSize="15" HorizontalAlignment="Left" Margin="52,194,0,0" VerticalAlignment="Top"/>
@@ -19,18 +19,14 @@
         <Label Content="Premieredato:" FontFamily="Times New Roman" FontSize="15" HorizontalAlignment="Left" Margin="52,342,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="tbDirector" HorizontalAlignment="Left" FontFamily="Times New Roman" FontSize="15" Margin="52,293,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Height="30"/>
         <TextBox x:Name="tbPremiereDate" HorizontalAlignment="Left" FontFamily="Times New Roman" FontSize="15" Margin="52,373,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Height="30"/>
- 
+
         <Label Content="Biograf navn:" FontFamily="Times New Roman" FontSize="15" HorizontalAlignment="Left" Margin="241,135,0,0" VerticalAlignment="Top"/>
         <Label Content="Biograf sal:" FontFamily="Times New Roman" FontSize="15" HorizontalAlignment="Left" Margin="241,215,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="tbCinemaName" HorizontalAlignment="Left" FontFamily="Times New Roman" FontSize="15" Margin="241,166,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Height="30"/>
         <TextBox x:Name="tbCinemaHall" HorizontalAlignment="Left" FontFamily="Times New Roman" FontSize="15" Margin="241,246,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Height="30"/>
 
-        <Label Content="Start tid:" FontFamily="Times New Roman" FontSize="15" HorizontalAlignment="Left" Margin="441,127,0,0" VerticalAlignment="Top"/>
-        <Label Content="Slut tid:" FontFamily="Times New Roman" FontSize="15" HorizontalAlignment="Left" Margin="441,207,0,0" VerticalAlignment="Top"/>
-        <Label Content="Spilletid:" FontFamily="Times New Roman" FontSize="15" HorizontalAlignment="Left" Margin="441,277,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="tbStartTime" HorizontalAlignment="Left" FontFamily="Times New Roman" FontSize="15" Margin="441,158,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Height="30"/>
-        <TextBox x:Name="tbEndTime" HorizontalAlignment="Left" FontFamily="Times New Roman" FontSize="15" Margin="441,238,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Height="30"/>
-        <TextBox x:Name="tbRunTime" HorizontalAlignment="Left" FontFamily="Times New Roman" FontSize="15" Margin="441,308,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Height="30"/>
+        <Label Content="Start tid:" FontFamily="Times New Roman" FontSize="15" HorizontalAlignment="Left" Margin="241,295,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbStartTime" HorizontalAlignment="Left" FontFamily="Times New Roman" FontSize="15" Margin="241,326,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Height="30"/>
 
     </Grid>
 </Window>
