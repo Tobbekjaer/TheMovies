@@ -29,7 +29,7 @@ namespace TheMovies.Application
 
         public void AddShow(Movie movie, DateTime startTime, Cinema cinema)
         {
-            // Create a new movie 
+            // Create a new show 
             Show newShow = new Show(movie, startTime, cinema);
             // Add the new show to list of shows
             shows.Add(newShow);
