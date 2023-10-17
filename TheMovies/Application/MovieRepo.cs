@@ -35,13 +35,19 @@ namespace TheMovies.Application
             movies.Add(newMovie);
             // Add the new movie to the database
             AddMovieToDatabase(newMovie);
+        }
 
+        public void AddMovieToBooking(string title)
+        {
+            // Create a new movie 
+            Movie newMovie = new Movie(title);
+            // Add the new movie to list of movies
+            movies.Add(newMovie);
         }
 
         public Movie GetAddedMovie()
         {
             return movies.Last();
-
         }
 
         public void AddMovieToDatabase(Movie movie)

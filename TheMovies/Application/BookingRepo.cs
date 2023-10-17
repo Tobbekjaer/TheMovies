@@ -38,10 +38,10 @@ namespace TheMovies.Application
                 $" in {newBooking.Show.Cinema.CinemaName} in cinema hall {newBooking.Show.Cinema.CinemaHall}");
 
             // Add the new booking to the database
-            AddShowToDatabase(newBooking);
+            // AddBookingToDatabase(newBooking);
         }
 
-        public void AddShowToDatabase(Booking booking)
+        public void AddBookingToDatabase(Booking booking)
         {
 
             try {

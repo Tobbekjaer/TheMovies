@@ -48,6 +48,10 @@ namespace TheMovies.Application
             shows.Add(newShow);
         }
 
+        public Show GetAddedShow()
+        {
+            return shows.Last();
+        }
         public void AddShowToDatabase(Show show)
         {
 

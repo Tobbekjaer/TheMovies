@@ -25,7 +25,7 @@
         <Label Content="Tidspunkt:" FontFamily="Times New Roman" FontSize="15" HorizontalAlignment="Left" Margin="542,61,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.377,-0.055"/>
         <Label Content="Biograf:" FontFamily="Times New Roman" FontSize="15" HorizontalAlignment="Left" Margin="542,91,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.374,-0.006"/>
         <Label Content="Biografsal:" FontFamily="Times New Roman" FontSize="15" HorizontalAlignment="Left" Margin="542,126,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.374,-0.006"/>
-        <TextBox x:Name="tbTitel"  HorizontalAlignment="Left" FontFamily="Times New Roman" FontSize="15" Margin="624,21,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="150" Height="30"/>
+        <TextBox x:Name="tbTitle"  HorizontalAlignment="Left" FontFamily="Times New Roman" FontSize="15" Margin="624,21,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="150" Height="30"/>
         <TextBox x:Name="tbStartTime"  HorizontalAlignment="Left" FontFamily="Times New Roman" FontSize="15" Margin="624,56,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="150" Height="30" />
         <TextBox x:Name="tbCinemaName" HorizontalAlignment="Left" FontFamily="Times New Roman" FontSize="15" Margin="624,91,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="150" Height="30"/>
         <TextBox x:Name="tbCinemaHall" HorizontalAlignment="Left" FontFamily="Times New Roman" FontSize="15" Margin="624,126,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="150" Height="30"/>

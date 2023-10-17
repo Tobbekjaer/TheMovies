@@ -37,6 +37,14 @@ namespace TheMovies.Application
                 AddCinemaToDatabase(newCinema);            
             }
 
+        public void AddCinemaToBooking(string cinemaName, int cinemaHall, int numberOfSeats)
+        {
+            // Create a new cinema 
+            Cinema newCinema = new Cinema(cinemaName, cinemaHall, numberOfSeats);
+            // Add the new cinema to list of cinemas
+            cinemas.Add(newCinema);
+        }
+
         public Cinema GetAddedCinema()
         {
             return cinemas.Last();

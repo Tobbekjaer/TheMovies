@@ -39,12 +39,18 @@ namespace TheMovies.Application
 
         }
         // Calls AddBooking in BookingRepo
-        public void AddBooking(int ticketAmount, string email, string phone, Show show)
+        public void AddBooking(int ticketAmount, string email, string phone, string title, 
+            string cinemaName, int cinemaHall, int numberOfSeats, DateTime startTime)
         {
-
-
+            // Add the movie to movies
+            movieRepo.AddMovieToBooking(title);
+            // Add the cinema to cinemas
+            cinemaRepo.AddCinemaToBooking(cinemaName, cinemaHall, numberOfSeats);
+            // Add show to shows (parameter Movie and Cinema passed via GetAddedxxx()-methods)
+            showRepo.AddShowToBooking(movieRepo.GetAddedMovie(), startTime, cinemaRepo.GetAddedCinema());
             // Add booking to bookings
-            // bookingRepo.AddBooking(ticketNumber, email, phone, show);
+            bookingRepo.AddBooking(ticketAmount, email, phone, showRepo.GetAddedShow());
         }
+
     }
 }
