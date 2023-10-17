@@ -39,7 +39,7 @@ namespace TheMovies.Application
 
         }
         // Calls AddBooking in BookingRepo
-        public void AddBooking()
+        public void AddBooking(int ticketAmount, string email, string phone, Show show)
         {
 
 

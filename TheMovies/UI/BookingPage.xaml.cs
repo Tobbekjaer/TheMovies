@@ -58,7 +58,20 @@ namespace TheMovies.UI
 
         private void btnConfirm_Click(object sender, RoutedEventArgs e)
         {
+            DataGrid dg = (DataGrid)sender;
+            DataRowView rowSelected = dg.SelectedItem as DataRowView;
+            if (rowSelected != null) {
+                Movie movie = new Movie(rowSelected["Title"].ToString(), (int)rowSelected["Duration"],
+                    rowSelected["Genre"].ToString(), rowSelected["Director"].ToString(), (DateTime)rowSelected["PremiereDate"]);
+                Cinema cinema = new Cinema(rowSelected["CinemaName"].ToString(), (int)rowSelected["CinemaHall"],
+                    (int)rowSelected["NumberOfSeats"]);
+                Show show = new Show(movie, (DateTime)rowSelected["StartTime"], cinema);
 
+                controller.AddBooking(Convert.ToInt32(tbTicketAmount.Text), tbEmail.Text.ToString(),
+                    tbPhone.Text.ToString(), show);
+
+
+            }
         }
 
         private void datagrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -66,12 +79,13 @@ namespace TheMovies.UI
             DataGrid dg = (DataGrid)sender;
             DataRowView rowSelected = dg.SelectedItem as DataRowView;
             if(rowSelected != null) {
-                Movie movie = new Movie(rowSelected["Title"].ToString(), (int)rowSelected["Duration"],
-                    rowSelected["Genre"].ToString(), rowSelected["Director"].ToString(), (DateTime)rowSelected["PremiereDate"]);
-                Cinema cinema = new Cinema(rowSelected["CinemaName"].ToString(), (int)rowSelected["CinemaHall"]);
-                Show show = new Show();
+               tbTitel.Text = rowSelected["Title"].ToString();
+               tbStartTime.Text = rowSelected["StartTime"].ToString();
+               tbCinemaName.Text = rowSelected["CinemaName"].ToString();
+               tbCinemaHall.Text = rowSelected["CinemaHall"].ToString();
             }
         }
+
     }
 }
 

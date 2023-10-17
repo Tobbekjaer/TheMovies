@@ -33,5 +33,10 @@ namespace TheMovies.Model
             PremiereDate = PremiereDate;
         }
 
+        public Movie(string title)
+        {
+            Title = title;        
+        }
+
     }
 }

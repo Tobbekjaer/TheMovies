@@ -11,7 +11,7 @@ namespace TheMovies.Model
 
         public string CinemaName { get; set; }
         public int CinemaHall { get; set; }
-        public int NumberOfSeats { get; set; }
+        public int NumberOfSeats { get; set; } = 100;
         public int GeneratedCinemaID { get; set; }
         public Cinema(string cinemaName, int cinemaHall)
         {

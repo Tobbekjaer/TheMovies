@@ -10,17 +10,25 @@
       Title="BookingPage">
 
     <Grid>
-        <TextBlock HorizontalAlignment="Center" Margin="0,22,0,0" TextWrapping="Wrap" TextAlignment="Center" FontSize="50" FontWeight="DemiBold" FontFamily="Times New Roman" Text="Booking" VerticalAlignment="Top" Height="58" Width="290"/>
-        <Label Content="Billetantal:" FontFamily="Times New Roman" FontSize="15" HorizontalAlignment="Left" Margin="35,113,0,0" VerticalAlignment="Top"/>
-        <Label Content="Email:" FontFamily="Times New Roman" FontSize="15" HorizontalAlignment="Left" Margin="222,112,0,0" VerticalAlignment="Top"/>
-        <Label Content="Telefonnummer:" FontFamily="Times New Roman" FontSize="15" HorizontalAlignment="Left" Margin="417,113,0,0" VerticalAlignment="Top"/>
-        <Label Content="Søg:" FontFamily="Times New Roman" FontSize="15" HorizontalAlignment="Left" Margin="607,113,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="tbTicketAmount"  HorizontalAlignment="Left" FontFamily="Times New Roman" FontSize="15" Margin="35,144,0,0" TextWrapping="Wrap" Text="Hjerm" VerticalAlignment="Top" Width="150" Height="30"/>
-        <TextBox x:Name="tbEmail"  HorizontalAlignment="Left" FontFamily="Times New Roman" FontSize="15" Margin="222,144,0,0" TextWrapping="Wrap" Text="2" VerticalAlignment="Top" Width="150" Height="30" />
-        <TextBox x:Name="tbPhone" HorizontalAlignment="Left" FontFamily="Times New Roman" FontSize="15" Margin="417,144,0,0" TextWrapping="Wrap" Text="2023-11-10 17:00:00" VerticalAlignment="Top" Width="150" Height="30"/>
-        <TextBox x:Name="tbSearch"  HorizontalAlignment="Left" FontFamily="Times New Roman" FontSize="15" Margin="607,144,0,0" TextWrapping="Wrap" Text="Hjerm" VerticalAlignment="Top" Width="150" Height="30"/>
+        <TextBlock HorizontalAlignment="Center" Margin="0,22,0,0" TextWrapping="Wrap" TextAlignment="Center" FontSize="30" FontWeight="DemiBold" FontFamily="Times New Roman" Text="Booking" VerticalAlignment="Top" Height="58" Width="165"/>
+        <Label Content="Billetantal:" FontFamily="Times New Roman" FontSize="15" HorizontalAlignment="Left" Margin="16,24,0,0" VerticalAlignment="Top"/>
+        <Label Content="Email:" FontFamily="Times New Roman" FontSize="15" HorizontalAlignment="Left" Margin="16,61,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.377,-0.055"/>
+        <Label Content="Telefon:" FontFamily="Times New Roman" FontSize="15" HorizontalAlignment="Left" Margin="16,91,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.374,-0.006"/>
+        <Label Content="Søg:" FontFamily="Times New Roman" FontSize="15" HorizontalAlignment="Left" Margin="16,125,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbTicketAmount"  HorizontalAlignment="Left" FontFamily="Times New Roman" FontSize="15" Margin="98,21,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="30"/>
+        <TextBox x:Name="tbEmail"  HorizontalAlignment="Left" FontFamily="Times New Roman" FontSize="15" Margin="98,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="30" />
+        <TextBox x:Name="tbPhone" HorizontalAlignment="Left" FontFamily="Times New Roman" FontSize="15" Margin="98,91,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="150" Height="30"/>
+        <TextBox x:Name="tbSearch"  HorizontalAlignment="Left" FontFamily="Times New Roman" FontSize="15" Margin="98,126,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="150" Height="30"/>
         <Button x:Name="btnConfirm" Content="Bekræft" FontFamily="Times New Roman" TextElement.Foreground="Beige" Background="Green" FontSize="20" HorizontalAlignment="Center" Margin="0,367,0,0" VerticalAlignment="Top" Height="40" Width="120" Click="btnConfirm_Click" BorderBrush="#FF707070"/>
-        <DataGrid x:Name="datagrid" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="29,194,29,101" SelectionChanged="datagrid_SelectionChanged"/>
+        <DataGrid x:Name="datagrid" d:ItemsSource="{d:SampleData ItemCount=10}" Margin="32,167,26,100" SelectionChanged="datagrid_SelectionChanged"/>
+        <Label Content="Filmtitel:" FontFamily="Times New Roman" FontSize="15" HorizontalAlignment="Left" Margin="542,24,0,0" VerticalAlignment="Top"/>
+        <Label Content="Tidspunkt:" FontFamily="Times New Roman" FontSize="15" HorizontalAlignment="Left" Margin="542,61,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.377,-0.055"/>
+        <Label Content="Biograf:" FontFamily="Times New Roman" FontSize="15" HorizontalAlignment="Left" Margin="542,91,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.374,-0.006"/>
+        <Label Content="Biografsal:" FontFamily="Times New Roman" FontSize="15" HorizontalAlignment="Left" Margin="542,126,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.374,-0.006"/>
+        <TextBox x:Name="tbTitel"  HorizontalAlignment="Left" FontFamily="Times New Roman" FontSize="15" Margin="624,21,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="150" Height="30"/>
+        <TextBox x:Name="tbStartTime"  HorizontalAlignment="Left" FontFamily="Times New Roman" FontSize="15" Margin="624,56,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="150" Height="30" />
+        <TextBox x:Name="tbCinemaName" HorizontalAlignment="Left" FontFamily="Times New Roman" FontSize="15" Margin="624,91,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="150" Height="30"/>
+        <TextBox x:Name="tbCinemaHall" HorizontalAlignment="Left" FontFamily="Times New Roman" FontSize="15" Margin="624,126,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="150" Height="30"/>
 
     </Grid>
 </Page>
