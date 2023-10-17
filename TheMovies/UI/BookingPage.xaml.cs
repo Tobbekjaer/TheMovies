@@ -27,14 +27,14 @@ namespace TheMovies.UI
         private string connectionString; // Connection string for database
         public BookingPage()
         {
-            InitializeComponent();
-            LoadGrid();
+            InitializeComponent(); 
 
             // Load the database connection string from appsettings.json
             IConfigurationRoot config = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
             connectionString = config.GetConnectionString("MyDBConnection");
-        }
 
+            LoadGrid();
+        }
 
         public void LoadGrid()
         {
@@ -56,6 +56,7 @@ namespace TheMovies.UI
         {
 
         }
-}
+
+    }
 }
 
