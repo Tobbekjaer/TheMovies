@@ -11,6 +11,7 @@ namespace TheMovies.Application
         MovieRepo movieRepo = new MovieRepo();
         ShowRepo showRepo = new ShowRepo();
         CinemaRepo cinemaRepo = new CinemaRepo();
+        BookingRepo bookingRepo = new BookingRepo();
         public Controller() 
         {
 
@@ -37,6 +38,13 @@ namespace TheMovies.Application
             showRepo.AddShow(movieRepo.GetAddedMovie(), startTime, cinemaRepo.GetAddedCinema());
 
         }
+        // Calls AddBooking in BookingRepo
+        public void AddBooking()
+        {
 
+
+            // Add booking to bookings
+            // bookingRepo.AddBooking(ticketNumber, email, phone, show);
+        }
     }
 }
