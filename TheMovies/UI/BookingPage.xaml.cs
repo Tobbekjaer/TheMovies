@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TheMovies.Application;
 using TheMovies.Model;
 
 namespace TheMovies.UI
@@ -23,7 +24,7 @@ namespace TheMovies.UI
     /// Interaction logic for BookingPage.xaml
     /// </summary>
     public partial class BookingPage : Page
-    {
+    {      
         private string connectionString; // Connection string for database
         public BookingPage()
         {
@@ -35,6 +36,8 @@ namespace TheMovies.UI
 
             LoadGrid();
         }
+
+        Controller controller = new Controller();
 
         public void LoadGrid()
         {
@@ -52,11 +55,23 @@ namespace TheMovies.UI
                 Console.WriteLine(ex.Message);
             }
         }
+
         private void btnConfirm_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
+        private void datagrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DataGrid dg = (DataGrid)sender;
+            DataRowView rowSelected = dg.SelectedItem as DataRowView;
+            if(rowSelected != null) {
+                Movie movie = new Movie(rowSelected["Title"].ToString(), (int)rowSelected["Duration"],
+                    rowSelected["Genre"].ToString(), rowSelected["Director"].ToString(), (DateTime)rowSelected["PremiereDate"]);
+                Cinema cinema = new Cinema(rowSelected["CinemaName"].ToString(), (int)rowSelected["CinemaHall"]);
+                Show show = new Show();
+            }
+        }
     }
 }
 

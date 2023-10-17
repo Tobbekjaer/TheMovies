@@ -20,7 +20,7 @@
         <TextBox x:Name="tbPhone" HorizontalAlignment="Left" FontFamily="Times New Roman" FontSize="15" Margin="417,144,0,0" TextWrapping="Wrap" Text="2023-11-10 17:00:00" VerticalAlignment="Top" Width="150" Height="30"/>
         <TextBox x:Name="tbSearch"  HorizontalAlignment="Left" FontFamily="Times New Roman" FontSize="15" Margin="607,144,0,0" TextWrapping="Wrap" Text="Hjerm" VerticalAlignment="Top" Width="150" Height="30"/>
         <Button x:Name="btnConfirm" Content="Bekræft" FontFamily="Times New Roman" TextElement.Foreground="Beige" Background="Green" FontSize="20" HorizontalAlignment="Center" Margin="0,367,0,0" VerticalAlignment="Top" Height="40" Width="120" Click="btnConfirm_Click" BorderBrush="#FF707070"/>
-        <DataGrid x:Name="datagrid" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="28,207,30,88"/>
+        <DataGrid x:Name="datagrid" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="29,194,29,101" SelectionChanged="datagrid_SelectionChanged"/>
 
     </Grid>
 </Page>
