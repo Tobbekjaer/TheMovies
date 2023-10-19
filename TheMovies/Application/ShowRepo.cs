@@ -29,7 +29,7 @@ namespace TheMovies.Application
 
         public void AddShow(Movie movie, DateTime startTime, Cinema cinema)
         {
-            // Create a new movie 
+            // Create a new show 
             Show newShow = new Show(movie, startTime, cinema);
             // Add the new show to list of shows
             shows.Add(newShow);
@@ -40,7 +40,18 @@ namespace TheMovies.Application
             // Add the new show to the database
             AddShowToDatabase(newShow);
         }
+        public void AddShowToBooking(Movie movie, DateTime startTime, Cinema cinema, int showID)
+        {
+            // Create a new show 
+            Show newShow = new Show(movie, startTime, cinema, showID);
+            // Add the new show to list of shows
+            shows.Add(newShow);
+        }
 
+        public Show GetAddedShow()
+        {
+            return shows.Last();
+        }
         public void AddShowToDatabase(Show show)
         {
 

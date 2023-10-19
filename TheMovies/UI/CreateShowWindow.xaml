@@ -20,13 +20,16 @@
         <TextBox x:Name="tbDirector" Text="James Cameron" HorizontalAlignment="Left" FontFamily="Times New Roman" FontSize="15" Margin="52,293,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="150" Height="30"/>
         <TextBox x:Name="tbPremiereDate" HorizontalAlignment="Left" FontFamily="Times New Roman" FontSize="15" Margin="52,373,0,0" TextWrapping="Wrap" Text="2009-10-10 13:00:00" VerticalAlignment="Top" Width="150" Height="30"/>
 
-        <Label Content="Biograf navn:" FontFamily="Times New Roman" FontSize="15" HorizontalAlignment="Left" Margin="241,135,0,0" VerticalAlignment="Top"/>
-        <Label Content="Biograf sal:" FontFamily="Times New Roman" FontSize="15" HorizontalAlignment="Left" Margin="241,215,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="tbCinemaName"  HorizontalAlignment="Left" FontFamily="Times New Roman" FontSize="15" Margin="241,166,0,0" TextWrapping="Wrap" Text="Hjerm" VerticalAlignment="Top" Width="150" Height="30"/>
-        <TextBox x:Name="tbCinemaHall"  HorizontalAlignment="Left" FontFamily="Times New Roman" FontSize="15" Margin="241,246,0,0" TextWrapping="Wrap" Text="2" VerticalAlignment="Top" Width="150" Height="30" />
+        <Label Content="Biograf navn:" FontFamily="Times New Roman" FontSize="15" HorizontalAlignment="Left" Margin="241,99,0,0" VerticalAlignment="Top"/>
+        <Label Content="Biograf sal:" FontFamily="Times New Roman" FontSize="15" HorizontalAlignment="Left" Margin="241,179,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbCinemaName"  HorizontalAlignment="Left" FontFamily="Times New Roman" FontSize="15" Margin="241,130,0,0" TextWrapping="Wrap" Text="Hjerm" VerticalAlignment="Top" Width="150" Height="30"/>
+        <TextBox x:Name="tbCinemaHall"  HorizontalAlignment="Left" FontFamily="Times New Roman" FontSize="15" Margin="241,210,0,0" TextWrapping="Wrap" Text="2" VerticalAlignment="Top" Width="150" Height="30" />
+  
+        <Label Content="Kapacitet:" FontFamily="Times New Roman" FontSize="15" HorizontalAlignment="Left" Margin="241,262,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbCapacity" HorizontalAlignment="Left" FontFamily="Times New Roman" FontSize="15" Margin="241,293,0,0" TextWrapping="Wrap" Text="10" VerticalAlignment="Top" Width="150" Height="30"/>
 
-        <Label Content="Start tid:" FontFamily="Times New Roman" FontSize="15" HorizontalAlignment="Left" Margin="241,295,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="tbStartTime" HorizontalAlignment="Left" FontFamily="Times New Roman" FontSize="15" Margin="241,326,0,0" TextWrapping="Wrap" Text="2023-11-10 17:00:00" VerticalAlignment="Top" Width="150" Height="30"/>
-
+        <Label Content="Start tid:" FontFamily="Times New Roman" FontSize="15" HorizontalAlignment="Left" Margin="241,342,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbStartTime" HorizontalAlignment="Left" FontFamily="Times New Roman" FontSize="15" Margin="241,373,0,0" TextWrapping="Wrap" Text="2023-11-10 17:00:00" VerticalAlignment="Top" Width="150" Height="30"/>
+      
     </Grid>
 </Window>

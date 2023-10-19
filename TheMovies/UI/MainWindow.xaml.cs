@@ -38,5 +38,12 @@ namespace TheMovies.UI
             CreateShowWindow createShowWindow = new CreateShowWindow();
             createShowWindow.Show();
         }
+
+        private void btnBooking_Click(object sender, RoutedEventArgs e)
+        {
+            // Open BookingPage
+            BookingPage bookingPage = new BookingPage();
+            Content = bookingPage;
+        }
     }
 }
