@@ -29,6 +29,15 @@ namespace TheMovies.Model
             EndTime = startTime.AddMinutes(RunTimeTotal);
             Cinema = cinema;
         }
+        public Show(Movie movie, DateTime startTime, Cinema cinema, int showID)
+        {
+            Movie = movie;
+            StartTime = startTime;
+            RunTimeTotal = movie.Duration + _adsCleaning;
+            EndTime = startTime.AddMinutes(RunTimeTotal);
+            Cinema = cinema;
+            GeneratedShowID = showID;
+        }
 
     }
 }

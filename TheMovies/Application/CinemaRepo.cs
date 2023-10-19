@@ -27,20 +27,20 @@ namespace TheMovies.Application
                 connectionString = config.GetConnectionString("MyDBConnection");
             }
 
-            public void AddCinema(string cinemaName, int cinemaHall)
+            public void AddCinema(string cinemaName, int cinemaHall, int capacity)
             {
                 // Create a new cinema 
-                Cinema newCinema = new Cinema(cinemaName, cinemaHall);
+                Cinema newCinema = new Cinema(cinemaName, cinemaHall, capacity);
                 // Add the new cinema to list of cinemas
                 cinemas.Add(newCinema);
                 // Add the new cinema to the database
                 AddCinemaToDatabase(newCinema);            
             }
 
-        public void AddCinemaToBooking(string cinemaName, int cinemaHall, int numberOfSeats)
+        public void AddCinemaToBooking(string cinemaName, int cinemaHall, int capacity)
         {
             // Create a new cinema 
-            Cinema newCinema = new Cinema(cinemaName, cinemaHall, numberOfSeats);
+            Cinema newCinema = new Cinema(cinemaName, cinemaHall, capacity);
             // Add the new cinema to list of cinemas
             cinemas.Add(newCinema);
         }
@@ -63,6 +63,7 @@ namespace TheMovies.Application
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@CinemaName", cinema.CinemaName);
                     cmd.Parameters.AddWithValue("@CinemaHall", cinema.CinemaHall);
+                    cmd.Parameters.AddWithValue("@Capacity", cinema.Capacity);
 
                     // Adding the output parameters
                     cmd.Parameters.Add("@CinemaID", SqlDbType.Int).Direction = ParameterDirection.Output;

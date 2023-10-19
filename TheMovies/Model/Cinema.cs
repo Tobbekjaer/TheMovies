@@ -11,18 +11,18 @@ namespace TheMovies.Model
 
         public string CinemaName { get; set; }
         public int CinemaHall { get; set; }
-        public int NumberOfSeats { get; set; } = 100;
+        public int Capacity { get; set; } = 100;
         public int GeneratedCinemaID { get; set; }
         public Cinema(string cinemaName, int cinemaHall)
         {
             CinemaName = cinemaName;
             CinemaHall = cinemaHall;
         }
-        public Cinema(string cinemaName, int cinemaHall, int numberOfSeats)
+        public Cinema(string cinemaName, int cinemaHall, int capacity)
         {
             CinemaName = cinemaName;
             CinemaHall = cinemaHall;
-            NumberOfSeats = numberOfSeats;
+            Capacity = capacity;
         }
 
     }

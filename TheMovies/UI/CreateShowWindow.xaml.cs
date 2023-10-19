@@ -31,8 +31,8 @@ namespace TheMovies.UI
         {
             // Calls AddShow in Controller class
             controller.AddShow(tbTitel.Text, Convert.ToInt32(tbDuration.Text), tbGenre.Text, tbDirector.Text,
-                Convert.ToDateTime(tbPremiereDate.Text), tbCinemaName.Text, Convert.ToInt32(tbCinemaHall.Text),
-                Convert.ToDateTime(tbStartTime.Text));
+                Convert.ToDateTime(tbPremiereDate.Text), tbCinemaName.Text, Convert.ToInt32(tbCinemaHall.Text), 
+                Convert.ToInt32(tbCapacity.Text), Convert.ToDateTime(tbStartTime.Text));
             
             ClearTextBoxes();
         }
@@ -47,6 +47,7 @@ namespace TheMovies.UI
             //tbPremiereDate.Clear();
             tbCinemaName.Clear();
             tbCinemaHall.Clear();
+            tbCapacity.Clear();
             //tbStartTime.Clear();
         }
     }

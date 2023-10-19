@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using TheMovies.Model;
 
 namespace TheMovies.Application
@@ -37,8 +38,15 @@ namespace TheMovies.Application
             Debug.WriteLine($"{newBooking.TicketAmount} tickets has been reserved for {newBooking.Show.Movie.Title}" +
                 $" in {newBooking.Show.Cinema.CinemaName} in cinema hall {newBooking.Show.Cinema.CinemaHall}");
 
-            // Add the new booking to the database
-            // AddBookingToDatabase(newBooking);
+            // Add the new booking to the database if the capacity limit hasn't been reached
+            if(CheckCapacity(newBooking)) {
+                AddBookingToDatabase(newBooking);
+            }
+            else {
+                MessageBox.Show("Biografens kapacitet er overskredet:\n" +
+                    "Vælg venligst en anden forestilling eller færre  billetter.");
+            }
+            
         }
 
         public void AddBookingToDatabase(Booking booking)
@@ -52,11 +60,10 @@ namespace TheMovies.Application
                     SqlCommand cmd = new SqlCommand("spInsertBooking", con);
 
                     cmd.CommandType = CommandType.StoredProcedure;
-                    //cmd.Parameters.AddWithValue("@StartTime", show.StartTime);
-                    //cmd.Parameters.AddWithValue("@EndTime", show.EndTime);
-                    //cmd.Parameters.AddWithValue("@RunTimeTotal", show.RunTimeTotal);
-                    //cmd.Parameters.AddWithValue("@MovieID", show.Movie.GeneratedMovieID);
-                    //cmd.Parameters.AddWithValue("@CinemaID", show.Cinema.GeneratedCinemaID);
+                    cmd.Parameters.AddWithValue("@TicketAmount", booking.TicketAmount);
+                    cmd.Parameters.AddWithValue("@Email", booking.Email);
+                    cmd.Parameters.AddWithValue("@Phone", booking.Phone);
+                    cmd.Parameters.AddWithValue("@ShowID", booking.Show.GeneratedShowID);
 
                     // Adding the output parameters
                     cmd.Parameters.Add("@BookingID", SqlDbType.Int).Direction = ParameterDirection.Output;
@@ -73,6 +80,28 @@ namespace TheMovies.Application
             finally {
                 // MessageBox.Show($"{title} blev tilføjet.");
             }
+        }
+
+        private bool CheckCapacity(Booking newBooking)
+        {
+            int count;
+            bool capacity = false; 
+
+            try {
+                using (SqlConnection con = new SqlConnection(connectionString)) {
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand($"sptmGetTotalTicketsSold @ShowID = {newBooking.Show.GeneratedShowID}", con);
+                    count = (int)cmd.ExecuteScalar();
+                }
+                // Check whether the tickets sold + ticket amount from booking is less than the capacity of the cinema hall
+                if ((count + newBooking.TicketAmount) <= newBooking.Show.Cinema.Capacity) {
+                    capacity = true;
+                }
+            }
+            catch (Exception ex) {
+                Console.WriteLine(ex.Message);
+            }
+            return capacity;
         }
     }
 }

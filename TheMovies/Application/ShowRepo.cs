@@ -40,10 +40,10 @@ namespace TheMovies.Application
             // Add the new show to the database
             AddShowToDatabase(newShow);
         }
-        public void AddShowToBooking(Movie movie, DateTime startTime, Cinema cinema)
+        public void AddShowToBooking(Movie movie, DateTime startTime, Cinema cinema, int showID)
         {
             // Create a new show 
-            Show newShow = new Show(movie, startTime, cinema);
+            Show newShow = new Show(movie, startTime, cinema, showID);
             // Add the new show to list of shows
             shows.Add(newShow);
         }

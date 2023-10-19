@@ -26,6 +26,8 @@ namespace TheMovies.UI
     public partial class BookingPage : Page
     {      
         private string connectionString; // Connection string for database
+        private int showID;
+        private int capacity;
         public BookingPage()
         {
             InitializeComponent(); 
@@ -61,7 +63,8 @@ namespace TheMovies.UI
             // Add booking to system
             controller.AddBooking(Convert.ToInt32(tbTicketAmount.Text), tbEmail.Text,
             tbPhone.Text, tbTitle.Text, tbCinemaName.Text, Convert.ToInt32(tbCinemaHall.Text), 
-            Convert.ToInt32(tbTicketAmount.Text), Convert.ToDateTime(tbStartTime.Text));   
+            capacity, Convert.ToDateTime(tbStartTime.Text), showID);
+
         }
 
         private void datagrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -73,6 +76,8 @@ namespace TheMovies.UI
                tbStartTime.Text = rowSelected["StartTime"].ToString();
                tbCinemaName.Text = rowSelected["CinemaName"].ToString();
                tbCinemaHall.Text = rowSelected["CinemaHall"].ToString();
+               showID = (int)rowSelected["ShowID"];
+               capacity = (int)rowSelected["Capacity"];
             }
         }
 
