@@ -64,7 +64,6 @@ namespace TheMovies.UI
             controller.AddBooking(Convert.ToInt32(tbTicketAmount.Text), tbEmail.Text,
             tbPhone.Text, tbTitle.Text, tbCinemaName.Text, Convert.ToInt32(tbCinemaHall.Text), 
             capacity, Convert.ToDateTime(tbStartTime.Text), showID);
-
         }
 
         private void datagrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
