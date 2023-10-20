@@ -64,7 +64,6 @@ namespace TheMovies.UI
             controller.AddBooking(Convert.ToInt32(tbTicketAmount.Text), tbEmail.Text,
             tbPhone.Text, tbTitle.Text, tbCinemaName.Text, Convert.ToInt32(tbCinemaHall.Text), 
             capacity, Convert.ToDateTime(tbStartTime.Text), showID);
-
         }
 
         private void datagrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -78,6 +77,30 @@ namespace TheMovies.UI
                tbCinemaHall.Text = rowSelected["CinemaHall"].ToString();
                showID = (int)rowSelected["ShowID"];
                capacity = (int)rowSelected["Capacity"];
+            }
+        }
+
+        private void btnSearch_Click(object sender, RoutedEventArgs e)
+        {
+            // Search movie by Title
+            LoadGridSelectedMovie();
+        }
+
+        public void LoadGridSelectedMovie()
+        {
+            // Search movie by Title tbSearch.Text
+            try {
+                using (SqlConnection con = new SqlConnection(connectionString)) {
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand($"SELECT * FROM vShowCinemaMovieConnected WHERE Title = '{tbSearch.Text}'", con);
+                    DataTable dt = new DataTable();
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    dt.Load(reader);
+                    datagrid.ItemsSource = dt.DefaultView;
+                }
+            }
+            catch (Exception ex) {
+                Console.WriteLine(ex.Message);
             }
         }
 

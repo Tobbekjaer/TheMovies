@@ -78,7 +78,7 @@ namespace TheMovies.Application
                 MessageBox.Show(ex.Message);
             }
             finally {
-                // MessageBox.Show($"{title} blev tilføjet.");
+                MessageBox.Show($"Booking af {booking.Show.Movie.Title} i {booking.Show.Cinema.CinemaName} sal {booking.Show.Cinema.CinemaHall} blev reserveret til {booking.Email}.");
             }
         }
 
@@ -91,7 +91,7 @@ namespace TheMovies.Application
                 using (SqlConnection con = new SqlConnection(connectionString)) {
                     con.Open();
                     SqlCommand cmd = new SqlCommand($"sptmGetTotalTicketsSold @ShowID = {newBooking.Show.GeneratedShowID}", con);
-                    count = (int)cmd.ExecuteScalar();
+                    count = (int)cmd.ExecuteScalar(); 
                 }
                 // Check whether the tickets sold + ticket amount from booking is less than the capacity of the cinema hall
                 if ((count + newBooking.TicketAmount) <= newBooking.Show.Cinema.Capacity) {
