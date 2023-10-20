@@ -93,7 +93,7 @@ namespace TheMovies.UI
             try {
                 using (SqlConnection con = new SqlConnection(connectionString)) {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand($"SELECT * FROM WHERE Title = {tbSearch.Text}", con);
+                    SqlCommand cmd = new SqlCommand($"SELECT * FROM vShowCinemaMovieConnected WHERE Title = '{tbSearch.Text}'", con);
                     DataTable dt = new DataTable();
                     SqlDataReader reader = cmd.ExecuteReader();
                     dt.Load(reader);

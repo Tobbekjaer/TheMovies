@@ -29,7 +29,7 @@
         <TextBox x:Name="tbStartTime"  HorizontalAlignment="Left" FontFamily="Times New Roman" FontSize="15" Margin="624,56,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="150" Height="30" />
         <TextBox x:Name="tbCinemaName" HorizontalAlignment="Left" FontFamily="Times New Roman" FontSize="15" Margin="624,91,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="150" Height="30"/>
         <TextBox x:Name="tbCinemaHall" HorizontalAlignment="Left" FontFamily="Times New Roman" FontSize="15" Margin="624,126,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="150" Height="30"/>
-        <Button x:Name="btnSearch" Content="Søg" FontFamily="Times New Roman" TextElement.Foreground="Green" FontSize="15" HorizontalAlignment="Left" Margin="265,127,0,0" VerticalAlignment="Top" Height="28" Width="49" Click="btnSearch_Click" BorderBrush="White" Background="{x:Null}"/>
+        <Button x:Name="btnSearch" Content="Søg" FontFamily="Times New Roman" TextElement.Foreground="Green" FontSize="15" HorizontalAlignment="Left" Margin="265,127,0,0" VerticalAlignment="Top" Height="28" Width="49" Click="btnSearch_Click" BorderBrush="SaddleBrown" Background="{x:Null}"/>
 
     </Grid>
 </Page>
